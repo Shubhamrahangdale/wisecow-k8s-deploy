@@ -1,14 +1,13 @@
-FROM node:18
+FROM node:18-bullseye
 
 WORKDIR /app
 
-RUN apt-get update && \
-    apt-get install -y python3 make g++ && \
-    rm -rf /var/lib/apt/lists/*
+# Install dependencies for native modules
+RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 
 COPY package*.json ./
 
-RUN npm install --legacy-peer-deps
+RUN npm ci || npm install --legacy-peer-deps
 
 COPY . .
 

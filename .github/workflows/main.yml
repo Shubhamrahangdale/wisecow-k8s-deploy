@@ -18,9 +18,9 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t ghcr.io/${{ Shubhamrahangdale }}/wisecow:latest .
-        docker push ghcr.io/${{ Shubhamrahangdale }}/wisecow:latest
-
+        docker build -t ghcr.io/Shubhamrahangdale/wisecow:latest .
+        docker push ghcr.io/Shubhamrahangdale/wisecow:latest
+        
     - name: Setup Kubeconfig
       run: echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > $HOME/.kube/config
 
